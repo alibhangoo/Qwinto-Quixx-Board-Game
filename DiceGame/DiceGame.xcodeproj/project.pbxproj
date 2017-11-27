@@ -11,6 +11,8 @@
 		27F6EA661FC37E4B001EC53C /* Dice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27F6EA651FC37E4B001EC53C /* Dice.cpp */; };
 		27F6EA691FC4A31F001EC53C /* RollOfDice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27F6EA671FC4A31F001EC53C /* RollOfDice.cpp */; };
 		27F7278F1FC75F290076F53E /* QwintoRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27F7278E1FC75F290076F53E /* QwintoRow.cpp */; };
+		27F727921FCBA2000076F53E /* ScoreSheet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27F727911FCBA2000076F53E /* ScoreSheet.cpp */; };
+		27F727951FCBA9700076F53E /* QwintoScoreSheet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27F727941FCBA9700076F53E /* QwintoScoreSheet.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +38,11 @@
 		27F7278D1FC74C6F0076F53E /* QwintoRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QwintoRow.h; sourceTree = "<group>"; };
 		27F7278E1FC75F290076F53E /* QwintoRow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QwintoRow.cpp; sourceTree = "<group>"; };
 		27F727901FCA64600076F53E /* ScoreSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScoreSheet.h; sourceTree = "<group>"; };
+		27F727911FCBA2000076F53E /* ScoreSheet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreSheet.cpp; sourceTree = "<group>"; };
+		27F727931FCBA95F0076F53E /* QwintoSchoreSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QwintoSchoreSheet.h; sourceTree = "<group>"; };
+		27F727941FCBA9700076F53E /* QwintoScoreSheet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QwintoScoreSheet.cpp; sourceTree = "<group>"; };
+		27F727961FCBAA850076F53E /* Player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		27F727971FCBAB240076F53E /* QwintoPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QwintoPlayer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +84,11 @@
 				27F7278D1FC74C6F0076F53E /* QwintoRow.h */,
 				27F7278E1FC75F290076F53E /* QwintoRow.cpp */,
 				27F727901FCA64600076F53E /* ScoreSheet.h */,
+				27F727931FCBA95F0076F53E /* QwintoSchoreSheet.h */,
+				27F727941FCBA9700076F53E /* QwintoScoreSheet.cpp */,
+				27F727911FCBA2000076F53E /* ScoreSheet.cpp */,
+				27F727961FCBAA850076F53E /* Player.h */,
+				27F727971FCBAB240076F53E /* QwintoPlayer.h */,
 			);
 			path = DiceGame;
 			sourceTree = "<group>";
@@ -138,7 +150,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F727921FCBA2000076F53E /* ScoreSheet.cpp in Sources */,
 				27F7278F1FC75F290076F53E /* QwintoRow.cpp in Sources */,
+				27F727951FCBA9700076F53E /* QwintoScoreSheet.cpp in Sources */,
 				27F6EA661FC37E4B001EC53C /* Dice.cpp in Sources */,
 				27F6EA5A1FC36230001EC53C /* main.cpp in Sources */,
 				27F6EA691FC4A31F001EC53C /* RollOfDice.cpp in Sources */,
