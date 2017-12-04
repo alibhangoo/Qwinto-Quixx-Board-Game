@@ -10,10 +10,11 @@
 #define Player_h
 #include "RollOfDice.h"
 
-class PLayer{
+class Player{
+public:
     bool activePlayer; //check to see if this is the active player
-    virtual void inputBeforeRoll(RollOfDice& rd);
-    virtual void inputAfterRoll(RollOfDice& rd);
+    virtual void inputBeforeRoll(RollOfDice& rd) = 0;
+    virtual void inputAfterRoll(RollOfDice& rd) = 0;
 };
 
 #endif /* Player_h */

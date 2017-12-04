@@ -25,11 +25,5 @@ int Dice::roll(){
     return face = dis(RandomDice::generator);
 }
 
-//implementing operator<<
-std::ostream& operator<<(std::ostream& os, const Dice& obj){
-    os << obj.face;
-    return os;
-}
-
 
 

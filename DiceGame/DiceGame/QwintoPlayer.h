@@ -12,8 +12,13 @@
 #include "QwintoScoreSheet.h"
 
 
-class QwintoPlayer : Player {
+class QwintoPlayer : public Player {
+public:
     QwintoScoreSheet qss;
+    QwintoPlayer(QwintoScoreSheet qwintoScoreSheet);
+    void inputBeforeRoll(RollOfDice& rd);
+    void inputAfterRoll(RollOfDice& rd);
+    
 };
 
 #endif /* QwintoPlayer_h */

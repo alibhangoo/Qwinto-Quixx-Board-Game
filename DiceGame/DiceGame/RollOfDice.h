@@ -14,6 +14,7 @@
 struct RollOfDice { //container structure that holds multiple dice as in a roll
     std::vector<Dice> vDice;
     
+    RollOfDice(){};
     RollOfDice(std::vector<Dice> vD);
     void roll();
     RollOfDice pair(const Dice&, const Dice&);

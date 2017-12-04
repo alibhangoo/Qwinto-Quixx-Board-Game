@@ -13,22 +13,26 @@
 #include "RollOfDice.h"
 
 class ScoreSheet{
-protected:
-    virtual bool validate(RollOfDice rd, Colour c, int leftPosition = -1) = 0;
-    
 public:
     std::string playerName;
     int failedAttempts;
     int overallScore;
     
-    ScoreSheet(const std::string& _firstName = "",
-               const std::string& _lastName = "");
+    ScoreSheet(const std::string& name = "");
     
-    bool score(RollOfDice rd, Colour c, int leftPosition = -1);
+    virtual ~ScoreSheet(); //base classes require virtual destructors
+    
+    bool score(RollOfDice rd, Colour colourSelected, int leftPosition = -1);
     virtual int calcTotal() = 0; //virtual function
     void setTotal();
-    virtual bool const operator! (); //overloading not operator
+    virtual bool const operator!(); //overloading not operator
     
+    //overload insertion operator, behaves polymorphically
+    friend std::ostream& operator<<(std::ostream& os, const ScoreSheet& obj);
+
+    
+protected:
+    virtual bool validate(RollOfDice rd, Colour colourSelected, int leftPosition = -1) = 0; //score calls this function
     
 };
 
