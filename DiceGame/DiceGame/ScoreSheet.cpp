@@ -13,7 +13,11 @@
 // --- Implementation of ScoreSheet Class Functions ---
 
 //implementing constructor
-ScoreSheet::ScoreSheet(const std::string& name) : playerName(name){}
+ScoreSheet::ScoreSheet(const std::string& name) {
+    playerName = name;
+    overallScore = 0;
+    failedAttempts = 0;
+}
 
 //implementing the score function
 bool ScoreSheet::score(RollOfDice rd, Colour colourSelected, int leftPosition){

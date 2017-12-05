@@ -19,7 +19,7 @@ struct RollOfDice { //container structure that holds multiple dice as in a roll
     void roll();
     RollOfDice pair(const Dice&, const Dice&);
     operator int() const;
-    friend std::ostream& operator<<(std::ostream& os, const RollOfDice& obj);
+    friend std::ostream& operator<<(std::ostream& os, const RollOfDice& rd);
 };
 
 #endif /* RollOfDice_h */

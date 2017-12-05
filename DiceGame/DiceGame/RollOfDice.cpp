@@ -37,11 +37,15 @@ RollOfDice::operator int() const{
 }
 
 //function to overload insertion operator to an output stream
-std::ostream& operator<<(std::ostream& os, const RollOfDice& obj){
-    os << "Roll of Dice: " << std::endl;
-    for(Dice d: obj.vDice){
+std::ostream& operator<<(std::ostream& os, const RollOfDice& rd){
+    int counter = 1;
+    os << "Roll Of Dice: " << std::endl;
+
+    for(Dice d: rd.vDice){
         os << d;
+        counter++;
     }
+    os<<"Total: " << int(rd) <<std::endl;
     return os;
 }
 

@@ -29,7 +29,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		271137F61FD37B9200C1B61C /* QwixxPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QwixxPlayer.h; sourceTree = "<group>"; };
 		27F6EA561FC36230001EC53C /* DiceGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DiceGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		27F6EA591FC36230001EC53C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		27F6EA601FC36291001EC53C /* Colour.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Colour.h; sourceTree = "<group>"; };
@@ -93,7 +92,6 @@
 				27F727961FCBAA850076F53E /* Player.h */,
 				27F727971FCBAB240076F53E /* QwintoPlayer.h */,
 				27F727981FCD3F650076F53E /* QwintoPlayer.cpp */,
-				271137F61FD37B9200C1B61C /* QwixxPlayer.h */,
 			);
 			path = DiceGame;
 			sourceTree = "<group>";

@@ -46,20 +46,20 @@ int QwintoScoreSheet::calcTotal(){
     (counterYellow == 9) ? (totalScore += yellowRow[9]) : (totalScore += counterYellow);
     (counterBlue == 9) ? (totalScore += blueRow[9]) : (totalScore += counterBlue);
 
-    //check to see if player scored any points in overlapping columns
+    //check to see if player scored any points in overlapping columns [BONUS POINT CALCULATION]
     for(int i = 0; i < 6; i++){
         if(redRow[i] > 0 && yellowRow[i+1]>0 && blueRow[i+2]>0){
             switch(i){
                 case 0:
-                    totalScore += blueRow[i+2]; break;
+                    totalScore += blueRow[i+2]; break; //bonus point for blue row (col 0) [using red row as reference]
                 case 1:
-                    totalScore += redRow[i]; break;
+                    totalScore += redRow[i]; break; //bonus point for red row (col 1)
                 case 5:
-                    totalScore += redRow[i]; break;
+                    totalScore += redRow[i]; break; //bonus point for red row (col 5)
                 case 6:
-                    totalScore += yellowRow[i+1]; break;
+                    totalScore += yellowRow[i+1]; break; //bonus point for yellow row (col 6)
                 case 7:
-                    totalScore += blueRow[i+2]; break;
+                    totalScore += blueRow[i+2]; break; //bonus point for blue row (col 7)
                 default:
                     break;
         }
@@ -105,10 +105,13 @@ bool const QwintoScoreSheet::operator! (){
 //implementing validate function to check if a roll of dice can be entered at a specific position
 bool QwintoScoreSheet::validate(RollOfDice rd, Colour colourSelected, int leftPosition){
     
+    bool hasColour = false;
+    
     //check if the user selected colour is included in the roll of the dice
     for(Dice d : rd.vDice){
-        if(d.colour != colourSelected) return false;
+        if(d.colour == colourSelected) hasColour = true;
     }
+    if(hasColour == false) return false; //this
     
     //check for same number in overlapping columns
     switch(colourSelected){
@@ -122,7 +125,7 @@ bool QwintoScoreSheet::validate(RollOfDice rd, Colour colourSelected, int leftPo
         case Colour::BLUE:
             
             if(leftPosition == 1 && yellowRow[0] == rd) return false;
-            else if (leftPosition<8 && (redRow[leftPosition+2] == rd || yellowRow[leftPosition+1]==rd)) return false;
+            else if (leftPosition>1 && (redRow[leftPosition-2] == rd || yellowRow[leftPosition-1]==rd)) return false;
             return blueRow.validate(rd, leftPosition);
             
         case Colour::YELLOW:
@@ -140,20 +143,20 @@ bool QwintoScoreSheet::validate(RollOfDice rd, Colour colourSelected, int leftPo
 //implementing the overloaded insterion operator
 std::ostream& operator<<(std::ostream& os, const QwintoScoreSheet& qss){
     //output is modelled to look like the one provided in the assignment exmaple
-    os <<"Player name: " << qss.playerName;
-    os <<"\t Points: " << qss.overallScore << std::endl;
-    os << "\t\t------------------------------" << std::endl;
+    os <<"\nPlayer name: " << qss.playerName;
+    os <<"\t\t\t\t Points: " << qss.overallScore << std::endl;
+    os << "\t\t\t--------------------------------" << std::endl;
 
     os << qss.redRow; //printing red row
     os << "\t     ----------------------------------" << std::endl;
 
     os << qss.yellowRow; //printing yellow row
-    os << "\t -----------------------------------" << std::endl;
+    os << "\t  ----------------------------------" << std::endl;
 
     os << qss.blueRow; //printng blue row
-    os << "\t --------------------------------" << std::endl;
+    os << "\t  -------------------------------" << std::endl;
 
-    os << "Failed throws: " << qss.failedAttempts << std::endl;
+    os << "Failed throws: " << qss.failedAttempts << "\n" << std::endl;
 
     return os;
 }

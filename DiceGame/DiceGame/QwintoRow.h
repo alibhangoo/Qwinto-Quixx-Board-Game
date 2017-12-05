@@ -24,6 +24,7 @@ public:
     
     inline int& operator[] (const int index){ return qwinRow[index]; } //overloading the conversion operator
     
+    //implementation of validate inside header because it is a template (recommended by professor)
     bool validate(RollOfDice rd, int index) {
         int invalidIndex; //index with XX, which you cannot use
         
@@ -44,13 +45,13 @@ public:
         
         for (int i = 0; i < index; i++) { //check indexes to the left of where user wants to enter and ensure they are smaller
             if(i != invalidIndex){
-                if(qwinRow[i] > rd) return false;
+                if((qwinRow[i] != 0) && (qwinRow[i] >= rd)) return false;
             }
         }
         
         for(int i = 9; i > index; i--){ //check indexes to the right of where user wants to enter and ensure they are larger
             if(i !=invalidIndex){
-                if((qwinRow[i] != 0) && (qwinRow[i] < rd)) return false;
+                if((qwinRow[i] != 0) && (qwinRow[i] <= rd)) return false;
             }
         }
         

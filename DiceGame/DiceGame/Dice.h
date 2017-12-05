@@ -22,7 +22,7 @@ struct Dice{
     int face;
     
     Dice(Colour c); //constructor
-    inline int roll(); //change the face of dice every time roll is called
+    int roll(); //change the face of dice every time roll is called
     
     inline friend std::ostream& operator<<(std::ostream& os, Dice const& obj) { //overloading insertion operator
         switch (obj.colour) {

@@ -22,7 +22,7 @@ public:
     
     virtual ~ScoreSheet(); //base classes require virtual destructors
     
-    bool score(RollOfDice rd, Colour colourSelected, int leftPosition = -1);
+    virtual bool score(RollOfDice rd, Colour colourSelected, int leftPosition = -1);
     virtual int calcTotal() = 0; //virtual function
     void setTotal();
     virtual bool const operator!(); //overloading not operator

@@ -13,22 +13,21 @@
 #include "Player.h"
 #include "QwintoRow.h"
 #include "QwintoPlayer.h"
-#include "QwixxPlayer.h"
 
 using namespace std;
 
 int main() {
     
     std::string gameType = "";
+    std::string winnerPlayerName = "";
     int totalPlayers = 0;
     std::vector<std::string> playerNames; //vector filled with player names
-    std::string playerName = "", winnerPlayerName = "";
+    std::string playerName = "";
     bool finished = false;
     RollOfDice rd;
-    int playerTurn = 0, currentPlayer = 0, winnerScore = -1; //ex. player 0, player 1 ... player x
+    int playerTurn = 0, currentPlayer = 0; //ex. player 0, player 1 ... player x
     
     std::vector<QwintoPlayer> qwinPlayer;
-    std::vector<QwixxPlayer> qwixPlayer;
     
     RollOfDice dice; //create a RollOfDice for the game
     
@@ -45,14 +44,17 @@ int main() {
     }
     
     //promot user for # of players in the game
-    std::cout<<"Please enter the number of players [1 - 3]: ";
-    do{
-        while(!(std::cin >> totalPlayers)){
-            std::cout << "Please enter [1 - 3]. \n";
-            std::cin.clear(); //clear error flag
-            std::cin.ignore(10000, '\n'); //skip to next new line
+    while(totalPlayers <= 0 || totalPlayers >=3){
+        std::cout<<"Please enter the number of players [1 - 3]: ";
+        std::cin >> totalPlayers;
+        
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
-    }while(totalPlayers <= 0 || totalPlayers >=3);
+
+    }
+    
 
     //prompt user for player names:
     std::cout << "Please enter player names!" << std::endl;
@@ -77,15 +79,16 @@ int main() {
             QwintoPlayer& currentQwintoPlayer = qwinPlayer.at(currentPlayer);
             
             currentQwintoPlayer.activePlayer = true; //set active player to true for the current player
-            std::cout << currentQwintoPlayer.qss;
             
             currentQwintoPlayer.inputBeforeRoll(rd); //call input before roll to prompt player for info about dice
             rd.roll(); //roll dice
+            
             std::cout << rd; //print the roll
             std::cout << currentQwintoPlayer.qss; //print scoresheet of active player
+            
             currentQwintoPlayer.inputAfterRoll(rd); //get input from active player after roll
             currentQwintoPlayer.qss.setTotal(); //score dice according to input form active player
-            std::cout << currentQwintoPlayer.qss;
+            std::cout << currentQwintoPlayer.qss; //print scoresheet of active player
 
             //loop over all non-active players
             for(int i=0;i<totalPlayers;i++){
@@ -98,29 +101,31 @@ int main() {
             }
             
             for(int i=0; i< totalPlayers; i++){
-                if(!qwinPlayer.at(i).qss) finished = true;
+                if(!qwinPlayer.at(i).qss){ //if overloaded not operator returns true, game had ended
+                    std::cout << "----------------------- GAME OVER -----------------------" << std::endl;
+                    finished = true;
+                }
             }
             
-            playerTurn++; //next players turn
             currentQwintoPlayer.activePlayer = false; //player turn is over
-            
-        }
-        
-        //loop over all players to calculate total points
-        for(int i=0; i<totalPlayers; i++){
-            qwinPlayer.at(i).qss.setTotal();//calculate points for each player
-            std::cout << qwinPlayer.at(i).qss; //print scoresheet
-            
-            //find winner
-            if(qwinPlayer.at(i).qss.overallScore > winnerScore){
-                winnerPlayerName = qwinPlayer.at(i).qss.playerName;
-                winnerScore = qwinPlayer.at(i).qss.overallScore;
-            }
+            playerTurn++; //next players turn
         }
     }
     
-    //print the winner
-    std::cout << "CONGRATS!" << winnerPlayerName << " You won! Score: " << winnerScore << std::endl;
+    int indexOfWinner, winnerScore = qwinPlayer.at(0).qss.overallScore;
     
+    //loop over all players to calculate total points & find the winner
+    for(int i=0; i<totalPlayers; i++){
+        qwinPlayer.at(i).qss.setTotal();//calculate points for each player
+        
+        //find winner
+        if(winnerScore < qwinPlayer.at(i).qss.overallScore){
+            winnerScore = qwinPlayer.at(i).qss.overallScore;
+            indexOfWinner = i;
+        }
+        std:: cout << qwinPlayer.at(i).qss;
+    }
+    //print the winner
+    std::cout << "Congrats " << qwinPlayer.at(indexOfWinner).qss.playerName << ". You won! Score: " << qwinPlayer.at(indexOfWinner).qss.overallScore << std::endl;
 }
 
