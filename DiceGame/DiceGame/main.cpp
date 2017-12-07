@@ -2,9 +2,8 @@
 //  main.cpp
 //  DiceGame
 //
-//  Created by Haider on 2017-11-20.
-//  Copyright © 2017 Haider. All rights reserved.
-//
+//  Name: Ali Bhangoo
+//  Student #: 7828675
 
 #include <iostream>
 #include <random>
@@ -44,7 +43,7 @@ int main() {
     }
     
     //promot user for # of players in the game
-    while(totalPlayers <= 0 || totalPlayers >=3){
+    while(totalPlayers <= 0 || totalPlayers >3){
         std::cout<<"Please enter the number of players [1 - 3]: ";
         std::cin >> totalPlayers;
         
@@ -52,10 +51,8 @@ int main() {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
-
     }
     
-
     //prompt user for player names:
     std::cout << "Please enter player names!" << std::endl;
     for(int i = 0; i<totalPlayers; i++){
@@ -88,7 +85,6 @@ int main() {
             
             currentQwintoPlayer.inputAfterRoll(rd); //get input from active player after roll
             currentQwintoPlayer.qss.setTotal(); //score dice according to input form active player
-            std::cout << currentQwintoPlayer.qss; //print scoresheet of active player
 
             //loop over all non-active players
             for(int i=0;i<totalPlayers;i++){
@@ -96,13 +92,12 @@ int main() {
                     std::cout << qwinPlayer.at(i).qss; //print scoresheet of non-active player
                     qwinPlayer.at(i).inputAfterRoll(rd); //get input from non-active player (to pass or record throw)
                     qwinPlayer.at(i).qss.setTotal();
-                    std::cout << qwinPlayer.at(i).qss;
                 }
             }
             
             for(int i=0; i< totalPlayers; i++){
                 if(!qwinPlayer.at(i).qss){ //if overloaded not operator returns true, game had ended
-                    std::cout << "----------------------- GAME OVER -----------------------" << std::endl;
+                    std::cout << "\n----------------------- GAME OVER -----------------------" << std::endl;
                     finished = true;
                 }
             }

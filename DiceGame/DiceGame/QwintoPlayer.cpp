@@ -2,9 +2,8 @@
 //  QwintoPlayer.cpp
 //  DiceGame
 //
-//  Created by Haider on 2017-11-28.
-//  Copyright © 2017 Haider. All rights reserved.
-//
+//  Name: Ali Bhangoo
+//  Student #: 7828675
 
 #include "QwintoPlayer.h"
 #include<string>
@@ -65,7 +64,7 @@ void QwintoPlayer::inputAfterRoll(RollOfDice& rd){
     while(finished == false){
         
         std::string userRowInput = "";
-        std::string userColumnInput = "";
+        int userColumnInput = 0;
         int columnNumber = 0;
                 
         //notify player that they can skip or fail turn based on active player or not
@@ -83,7 +82,7 @@ void QwintoPlayer::inputAfterRoll(RollOfDice& rd){
             //ensure user entered a valid coloumn number
             while(columnNumber > 10 || columnNumber < 1){
                 std::cin >> userColumnInput;
-                columnNumber = std::stoi(userColumnInput); //convert string to int
+                columnNumber = userColumnInput; //convert string to int
                 
                 if(columnNumber > 10 || columnNumber < 1){  //check to see if user inut is correct
                     std::cout << "Please enter a valid number [1 - 10]: ";
@@ -101,22 +100,26 @@ void QwintoPlayer::inputAfterRoll(RollOfDice& rd){
         }else if(userRowInput == "red"){ //check to see if user wants to enter in red row
             if(qss.score(rd, Colour::RED,columnNumber)){ //score returns a boolean
                 qss.redRow[columnNumber] = rd;
+                std::cout << "\n----------------------- SCORED -----------------------" << std::endl;
                 finished = true;
             }
         }else if(userRowInput == "blue"){ //check to see if user wants to enter in red row
             if(qss.score(rd, Colour::BLUE,columnNumber)){ //score returns a boolean
                 qss.blueRow[columnNumber] = rd;
+                std::cout << "\n----------------------- SCORED -----------------------" << std::endl;
                 finished = true;
             }
         }else if(userRowInput == "yellow"){ //check to see if user wants to enter in red row
             if(qss.score(rd, Colour::YELLOW,columnNumber)){ //score returns a boolean
                 qss.yellowRow[columnNumber] = rd;
+                std::cout << "\n----------------------- SCORED -----------------------" << std::endl;
                 finished = true;
             }
         }
         
         if(finished == false)
-            std::cout << "Invalid row, try again!\n" << std::endl; //if user doesn't enter red, blue, or yellow
+            std::cout << "\n----------------------- INVALID ROW -----------------------\n" << std::endl;
+ //if user doesn't enter red, blue, or yellow
         
     }
 }

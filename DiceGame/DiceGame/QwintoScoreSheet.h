@@ -2,9 +2,8 @@
 //  QwintoScoreSheet.h
 //  DiceGame
 //
-//  Created by Haider on 2017-11-28.
-//  Copyright © 2017 Haider. All rights reserved.
-//
+//  Name: Ali Bhangoo
+//  Student #: 7828675
 
 #ifndef QwintoScoreSheet_h
 #define QwintoScoreSheet_h

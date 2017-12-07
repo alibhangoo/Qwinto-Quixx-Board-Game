@@ -2,9 +2,8 @@
 //  Colour.h
 //  DiceGame
 //
-//  Created by Haider on 2017-11-20.
-//  Copyright © 2017 Haider. All rights reserved.
-//
+//  Name: Ali Bhangoo
+//  Student #: 7828675
 
 #ifndef Colour_h
 #define Colour_h
