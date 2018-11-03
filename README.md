@@ -16,4 +16,9 @@
 
 **Date Completed:** December 7th, 2017
 
+**Files Included:** 
+
+* README.md - Information
+* Dice Game Source Code
+
 **Learn More:** [Qwinto](https://boardgamegeek.com/boardgame/183006/qwinto), [Qwixx](https://boardgamegeek.com/boardgame/131260/qwixx)
